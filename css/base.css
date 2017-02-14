@@ -1,0 +1,12 @@
+body {
+    font-family: Monospace;
+    margin: 0px;
+    overflow: hidden;
+    padding: 0;
+    background: #fff;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
