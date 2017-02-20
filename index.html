@@ -1,24 +1,143 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="bower_components/swiper/dist/css/swiper.min.css">
     <link rel="stylesheet" href="./css/base.css">
 </head>
+
 <body>
-    <div class="text" style="position: fixed;right: 20px;top: 20px;z-index: 120;height: 500px;">
-                231
+    <div class="bg">
+        <img src="img/bg3.jpg" alt=""  style="width: 100%"" class="active one">
+        <img src="img/homeinner.jpg" alt="" style="width: 100%" class="two">
     </div>
 
-    <script src="./js/vendor/three.min.js"></script>
-    <script src="./bower_components/hammerjs/hammer.min.js"></script>
-    <!--<script src="./js/vendor/CinematicCamera.js"></script>-->
-    <!--<script src="./js/vendor/BokehShader2.js"></script>-->
-    <script src="./js/vendor/stats.min.js"></script>
-    <script src="./js/main.js"></script>
+    <div class="loading">
+            <img src="img/loading0.gif" alt="" style="width: 20%;margin-bottom: 40px">
+        <p>0%</p>
+    </div>
+    <div class="swiper-container" >
+        <a href="javascript:;" class="music_icon" data-on="0">
+            <img src="img/music_icon.png" alt="">
+        </a>
+        <div class="logo-l">
+            <img src="img/logo.png" alt="">
+        </div>
+        <div class="hand">
+            <img src="img/lr.png" alt="">
+        </div>
+        <div class="swiper-wrapper">
+                 <div class="swiper-slide ">
+                <img src="img/zhanlan/1.png" alt="" >
+            </div>
+            <div class="swiper-slide ">
+                <img src="img/zhanlan/2.png" alt="" >
+            </div>
+            <div class="swiper-slide ">
+                <img src="img/zhanlan/3.png" alt="">
+            </div> 
+              <div class="swiper-slide ">
+                <img src="img/zhanlan/33.png" alt="">
+            </div>
+              <div class="swiper-slide ">
+                <img src="img/zhanlan/44.png" alt="">
+            </div>
+            <div class="swiper-slide ">
+                <img src="img/zhanlan/4.png" alt="">
+            </div>
+            
+                <div class="swiper-slide ">
+                <img src="img/zhanlan/5.png" alt="">
+            </div>
+               <div class="swiper-slide last ">
+                <img src="img/lastbg.jpg" alt="" class="bg">
+                <img src="img/last-t1.png" alt="" class="t1">
+                <img src="img/last-t2.png" alt="" class="t2">
+                <img src="img/last-t3.png" alt="" class="t3">
+                <img src="img/last-top.png" alt="" class="top">
+                <img src="img/look.png" alt="" class="sure" onclick="location.href='http://192.168.0.64:9000/inde.html'">
+            </div>
 
+      
+        </div>
+        <!-- Add Pagination -->
+        <!-- <div class="swiper-pagination"></div> -->
+    </div>
+    <audio src="img/bgmusic.mp3" id="music" preload ></audio>
+    <div class="home" id="home_page">
+        <p>
+            <img src="img/touch_app.png" alt=""><br>
+        点击屏幕进入奥地利风情</p>
+        <div class="left">
+                <img src="img/bg1_1.jpg"  alt="">
+        </div>
+
+        <div class="right">
+            <img src="img/bg1_2.jpg"  alt="">
+        </div>
+      
+    </div>
+    <!-- canvas主载体 -->
+    <div id="game-container"></div>
+    <!--3d引擎框架  -->
+    <script src="./js/vendor/three.min.js"></script>
+    <!-- 手势库 -->
+    <script src="./bower_components/hammerjs/hammer.min.js"></script>
+    <!-- 调试控制台 -->
+    <script src="./js/vendor/dat.gui.min.js"></script>
+    <!-- 动画库 -->
+    <script src="./js/vendor/tween.min.js"></script>
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- fps查看 -->
+    <script src="./js/vendor/stats.min.js"></script>
+    <script src="./bower_components/swiper/dist/js/swiper.min.js"></script>
+    <!-- 主程序 -->
+    <script src="./js/main.js"></script>
+    <script>
+    var stt1 = true
+    var stttimer = null
+    var swiper = new Swiper('.swiper-container', {
+        scrollbarHide: true,
+        centeredSlides: false,
+        grabCursor: true,
+        freeMode: true,
+        onTouchMove:function(){
+            stt1 = false
+            $('#music').get(0).play()
+            if(stttimer){
+            clearTimeout(stttimer)
+
+            }
+                    // $('.music_icon').data('on', 1)
+                    // $('.music_icon').on('touchend', function() {
+                    //     if ($(this).data('on') == 1) {
+                    //         $('#music').get(0).pause()
+                    //         $('.music_icon').data('on', 0)
+                    //     } else {
+                    //         $('#music').get(0).play()
+                    //         $('.music_icon').data('on', 1)
+                    //     }
+                    // })
+                },
+                onTouchEnd:function(){
+                    stt1 = true
+                    stttimer = setTimeout(function() {
+                        if(stt1){
+                              clearTimeout(stttimer)
+
+                            $('#music').get(0).pause()
+                        }
+                    }, 2000);
+                }
+         
+       
+        // loop:true
+    });
+    </script>
 </body>
+
 </html>
